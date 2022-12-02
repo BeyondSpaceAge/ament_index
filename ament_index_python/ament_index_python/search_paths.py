@@ -27,7 +27,9 @@ def get_search_paths():
     ament_prefix_path = os.environ.get(AMENT_PREFIX_PATH_ENV_VAR)
     if not ament_prefix_path:
         raise EnvironmentError(
-            "Environment variable '{}' is not set or empty".format(AMENT_PREFIX_PATH_ENV_VAR))
+            f"Environment variable '{AMENT_PREFIX_PATH_ENV_VAR}' is not set or empty"
+        )
+
 
     paths = ament_prefix_path.split(os.pathsep)
     return [p for p in paths if p and os.path.exists(p)]

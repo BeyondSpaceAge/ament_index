@@ -8,13 +8,18 @@ setup(
     version='1.5.1',
     packages=find_packages(exclude=['test']),
     data_files=[
-        ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/environment', [
-            'completion/ament_index-argcomplete.bash',
-            'completion/ament_index-argcomplete.zsh'
-        ]),
-        ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
+        (f'share/{package_name}', ['package.xml']),
+        (
+            f'share/{package_name}/environment',
+            [
+                'completion/ament_index-argcomplete.bash',
+                'completion/ament_index-argcomplete.zsh',
+            ],
+        ),
+        (
+            'share/ament_index/resource_index/packages',
+            [f'resource/{package_name}'],
+        ),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

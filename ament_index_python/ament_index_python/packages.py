@@ -52,13 +52,14 @@ def get_package_prefix(package_name):
     # This regex checks for a valid package name as defined by REP-127 including the recommended
     #  exemptions. See https://ros.org/reps/rep-0127.html#name
     if re.fullmatch('[a-zA-Z0-9][a-zA-Z0-9_-]+', package_name, re.ASCII) is None:
-        raise ValueError(
-            "'{}' is not a valid package name".format(package_name))
+        raise ValueError(f"'{package_name}' is not a valid package name")
     try:
         content, package_prefix = get_resource('packages', package_name)
     except LookupError:
         raise PackageNotFoundError(
-            "package '{}' not found, searching: {}".format(package_name, get_search_paths()))
+            f"package '{package_name}' not found, searching: {get_search_paths()}"
+        )
+
     return package_prefix
 
 
